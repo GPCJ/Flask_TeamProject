@@ -1,0 +1,32 @@
+h1{
+  padding: 2%;
+  font-size: 40px;
+  text-align: center;
+  font-weight: 700;
+  color: white;
+}
+
+#sub1{
+  height: 350px;
+  text-align: center;
+  padding: 50px;
+}
+#sub2{
+  height: 350px;
+  text-align: center;
+}
+
+img{
+  width: 80%;
+  height: 80%;
+  margin: 15px;
+}
+
+span{
+  font-size: 20px;
+  font-weight: 500px;
+}
+
+#title{
+  background-color: rgb(17,153,158);
+}

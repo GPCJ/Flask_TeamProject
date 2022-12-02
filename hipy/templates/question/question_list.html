@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+	<meta charset="utf-8">
+	<link type="text/css" rel="stylesheet" href="index.css"></link>
+	<link rel="stylesheet" href="bootstrapmain.min.css" type="text/css"></link>
+	<title>메인페이지</title>
+</head>
+<body style="background-color: #E4F9F5">
+	<div class="title">
+		<img src="기후.png">
+		<h1>세계의 다양한 기후</h1>
+	</div>
+	<div class="item">
+		<ul class="nav justify-content-center h-75">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="#" style="color:rgb(48, 227, 202);">HOME</a>
+			</li>
+			<li class="nav-item" >
+				<a class="nav-link" href="#" style="color:rgb(48, 227, 202);">ABOUT US</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#" style="color:rgb(48, 227, 202);">NEWS</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#" style="color:rgb(48, 227, 202);">ACCOUNT</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#" style="color:rgb(48, 227, 202);">CONTACTS</a>
+			</li>
+		</ul>
+	</div>
+		<div class="row">
+			<div class="col-2">
+				<nav class="list">
+					<ul>
+						<br>
+						<li><a href="{{url_for('question.detail', question_id = 1)}}"target="if1" class="text1">열대기후</a></li>
+						<li><a href="{{url_for('question.detail', question_id = 2)}}"target="if1" class="text1">건조기후</a></li>
+						<li><a href="{{url_for('question.detail', question_id = 3)}}"target="if1" class="text1">온대기후</a></li>
+						<li><a href="{{url_for('question.detail', question_id = 4)}}"target="if1" class="text1">냉대기후</a></li>
+						<li><a href="{{url_for('question.detail', question_id = 5)}}"target="if1" class="text1">한대기후</a></li>
+						<li><a href="{{url_for('question.detail', question_id = 6)}}"target="if1" class="text1">고산기후</a></li>
+						<br>
+					</ul>
+				</nav>
+			</div>
+			<div class="col-8">
+					<iframe name="if1" scrolling="no" src="{{url_for('question.detail', question_id = 1)}}"></iframe>
+			</div>
+			<div class="col-2">
+				<aside class="login">
+					<br>
+					<h2>Favorites</h2><br>
+					<a href="#">즐겨찾기 한 사진 보기</a>
+					<br><br><br>
+
+					{% if g.user %}
+						<h2>Log Out</h2>
+                   	 	<a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
+            		{% else %}
+						<h2>Log In</h2>
+						<a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
+						<br>
+						<h2>Sign In</h2>
+                    	<a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
+            		{% endif %}
+					<br><br>
+				</aside>
+			</div>
+		</div>
+		<br><br><br><br>
+		<div class="py-5 " style="background-color: rgb(17, 153, 158);">
+      <div class="container">
+        <p class="m-0 text-center text-white">
+          Copyright &copy; Your Website 2022
+        </p>
+      </div>
+    </div>
+		<script>
+		</script>
+</body>
+{% endblock %}
