@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<tbody>
+
+    <div class="container" style="margin-top:100px">
+
+        <center>
+            <h1>즐겨찾기에 추가한 기후</h1><br><br>
+        </center>
+
+        <table class="table">
+            {% if favorites %}
+            <thead>
+            <tr class="text-center table-dark">
+                <th>기후명</th>
+                <th style="width:50%">메모</th>
+                <th>추가일시</th>
+                <th>사용자</th>
+            </tr>
+            </thead>
+            {% for f in favorites %}
+            <tr class="text-center">
+                <td class="text-start" >
+                    <a href="#">{{ f.subject }}</a>
+                </td>
+                <td>{{ f.content }}</td>
+                <td>{{ f.create_date|datetime }}</td>
+                <td>{{ f.user.username }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="3">질문이 없습니다.</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+</tbody>
+
+{% endblock %}

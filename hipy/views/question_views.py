@@ -3,6 +3,7 @@ from werkzeug.utils import redirect
 from datetime import datetime
 from .. import db
 from hipy.models import Photo
+from hipy.models import Question
 
 from hipy.views.auth_views import login_required
 
@@ -33,20 +34,19 @@ def detail(question_id):
     if question_id == 6:
         return render_template('question/question_detail6.html')
 
-@bp.route('/photo/<int:pt_id>/')
-def photo(pt_id):
-    return '안녕하세요'
 
-
-
-@bp.route('/create/', methods=('GET','POST'))
+@bp.route('/create/<int:id>/', methods=('GET','POST'))
 @login_required
-def create():
+def create(id):
     form = QuestionForm()
     if request.method == 'POST' and form.validate_on_submit():
         question = Question(subject=form.subject.data, content=form.content.data, create_date=datetime.now(), user=g.user)
         db.session.add(question)
         db.session.commit()
         return redirect(url_for('main.index'))
-    return render_template('question/question_form.html', form=form)
+    return render_template('question/question_form.html', form=form, id = id)
 
+@bp.route('/favorites/')
+def favorites():
+    favorites = Question.query.order_by(Question.create_date.desc())
+    return render_template('question/favorite_list.html', favorites=favorites)

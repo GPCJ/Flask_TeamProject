@@ -19,19 +19,19 @@ style="filter:Alpha(style=0,opacity=30);opacity:0.5;-moz-opacity:0.5;"
 
   <div class="row bg" id="base">
     <div class="col-12"  id="title">
-      <h1>건조기후</h1>
+      <h1>온대기후</h1>
     </div>
 
     <div class="col-6" id="sub1">
 
-      <span>일반적으로 연평균 강수량이 500mm 미만이라고 정의하지만 독일의 지리학자 쾨펜은 연평균 강수량이 연평균 기온과 강수의 계절적분포의 상관관계로 성립된 건조한계에 이르지 못하였을때를 건조 기후라 정의하였다</span><br><br>
+      <span> 회귀선과 극권 사이의 중위도 지방으로, 열대와 한대 사이에 해당된다. 사계절이 뚜렷한 특징이 있다. 계절은 남반구와 북반구가 서로 반대로, 북반구가 한여름이면 남반구는 한겨울이 된다.</span><br><br>
 
-      <span>사하라 사막, 아라비아 사막, 모하비 사막</span>
+      <span> 유럽 중남부, 아시아 동부 일부, 오세아니아, 아메리카 중부 및 남부 </span>
     </div>
 
     <div class="col-6" id="sub2">
-      <img src= "{{url_for('static', filename='image/AA/2.jpg')}}" alt="준비안됨" id="qwer"><br>
-      <a href="{{ url_for('question.create', id = 2) }}" class="btn btn-primary">기후 즐겨찾기</a>
+      <img src= "{{url_for('static', filename='image/AA/3.jpg')}}" alt="준비안됨" id="qwer"><br>
+      <a href="{{ url_for('question.create', id = 3) }}" class="btn btn-primary">기후 즐겨찾기</a>
     </div>
 
   </div>
@@ -46,7 +46,7 @@ style="filter:Alpha(style=0,opacity=30);opacity:0.5;-moz-opacity:0.5;"
     function increase(){
         count=(count+1) % 10;
 
-        document.getElementById("qwer").src = 'B(건조기후)/' + count + '.jpg'
+        document.getElementById("qwer").src = 'C(온대기후)/' + count + '.jpg'
     }
 
   </script>

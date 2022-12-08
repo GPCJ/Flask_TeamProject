@@ -19,19 +19,19 @@ style="filter:Alpha(style=0,opacity=30);opacity:0.5;-moz-opacity:0.5;"
 
   <div class="row bg" id="base">
     <div class="col-12"  id="title">
-      <h1>건조기후</h1>
+      <h1>냉대기후</h1>
     </div>
 
     <div class="col-6" id="sub1">
 
-      <span>일반적으로 연평균 강수량이 500mm 미만이라고 정의하지만 독일의 지리학자 쾨펜은 연평균 강수량이 연평균 기온과 강수의 계절적분포의 상관관계로 성립된 건조한계에 이르지 못하였을때를 건조 기후라 정의하였다</span><br><br>
+      <span> 중위도 지역 북부와 고위도 지역에서 발달하는 기후를 가리킨다. 냉대 습윤 기후와 냉대 동계 소우 기후, 고지 지중해성 기후로 구분하지만, 습윤 대륙성 기후와 아극 기후로 구분하는 경우도 있다.</span><br><br>
 
-      <span>사하라 사막, 아라비아 사막, 모하비 사막</span>
+      <span>동부 유럽, 시베리아, 중국 동북부, 홋카이도, 캐나다</span>
     </div>
 
     <div class="col-6" id="sub2">
-      <img src= "{{url_for('static', filename='image/AA/2.jpg')}}" alt="준비안됨" id="qwer"><br>
-      <a href="{{ url_for('question.create', id = 2) }}" class="btn btn-primary">기후 즐겨찾기</a>
+      <img src= "{{url_for('static', filename='image/AA/4.jpg')}}" alt="준비안됨" id="qwer"><br>
+      <a href="{{ url_for('question.create', id = 4) }}" class="btn btn-primary">기후 즐겨찾기</a>
     </div>
 
   </div>
@@ -46,7 +46,7 @@ style="filter:Alpha(style=0,opacity=30);opacity:0.5;-moz-opacity:0.5;"
     function increase(){
         count=(count+1) % 10;
 
-        document.getElementById("qwer").src = 'B(건조기후)/' + count + '.jpg'
+        document.getElementById("qwer").src = 'D(냉대기후)/' + count + '.jpg'
     }
 
   </script>

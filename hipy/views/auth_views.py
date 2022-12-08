@@ -18,7 +18,8 @@ def signup():
         user = User.query.filter_by(username=form.username.data).first()
         if not user:
             user = User(username=form.username.data,
-                        password=generate_password_hash(form.password1.data))
+                        password=generate_password_hash(form.password1.data),
+                        email=form.email.data)
             db.session.add(user)
             db.session.commit()
             return redirect(url_for('main.index'))
