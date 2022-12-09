@@ -2,7 +2,7 @@
 {% block content %}
 <!-- 질문 등록 -->
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <h5 class="my-3 border-bottom pb-2">즐겨찾기</h5>
     <form method="post" class="my-3">
 
         {{ form.csrf_token }}
@@ -21,18 +21,17 @@
         </div>
         {% endif %}
         <!-- 오류표시 End -->
-
         <div class="mb-3">
-            <label for="subject">제목</label>
+            <label for="subject">기후</label>
             <input type="text" class="form-control" name="subject" id="subject"
-                value="{{id}}">
+                value="{{id}}" readonly>
         </div>
         <div class="mb-3">
-            <label for="content">내용</label>
-            <textarea class="form-control" name="content" id="content" rows="10">{{ form.content.data or '' }}</textarea>
+            <label for="content">메모</label>
+            <textarea class="form-control" name="content" id="content" rows="10"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
-
+        <button type="submit" class="btn btn-secondary">저장하기</button>
+        <a class="btn btn-secondary" href="{{ url_for('question._list') }}">돌아가기</a>
     </form>
 </div>
 {% endblock %}

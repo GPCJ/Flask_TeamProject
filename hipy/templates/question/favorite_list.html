@@ -5,37 +5,61 @@
 
     <div class="container" style="margin-top:100px">
 
+        {% if count > 0  %}
         <center>
             <h1>즐겨찾기에 추가한 기후</h1><br><br>
+
         </center>
 
         <table class="table">
-            {% if favorites %}
+
             <thead>
             <tr class="text-center table-dark">
                 <th>기후명</th>
                 <th style="width:50%">메모</th>
                 <th>추가일시</th>
                 <th>사용자</th>
+                <th>삭제</th>
             </tr>
             </thead>
+
             {% for f in favorites %}
             <tr class="text-center">
-                <td class="text-start" >
-                    <a href="#">{{ f.subject }}</a>
-                </td>
-                <td>{{ f.content }}</td>
+                <td class="text-start">{{ f.subject }}</td>
+                <td>{{f.content or '-'}}</td>
                 <td>{{ f.create_date|datetime }}</td>
                 <td>{{ f.user.username }}</td>
+                <td><a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary" data-uri="{{ url_for('question.delete', question_id=f.id) }}">삭제</a></td>
             </tr>
             {% endfor %}
-            {% else %}
-            <tr>
-                <td colspan="3">질문이 없습니다.</td>
-            </tr>
-            {% endif %}
         </table>
+        <a class="btn btn-secondary" style="float:right" href="{{ url_for('question._list') }}">돌아가기</a>
+        {% else %}
+        <center>
+            <hr>
+            <br>
+            <h1>즐겨찾기한 항목이 없습니다.</h1>
+            <br>
+            <hr>
+        </center>
+        <a class="btn btn-secondary btn-lg" style="float:right" href="{{ url_for('question._list') }}">돌아가기</a>
+        {% endif %}
+
+
+
+
     </div>
+
+<script type='text/javascript'>
+const delete_elements = document.getElementsByClassName("delete");
+Array.from(delete_elements).forEach(function(element) {
+    element.addEventListener('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = this.dataset.uri;
+        };
+    });
+});
+</script>
 
 </tbody>
 

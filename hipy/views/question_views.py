@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, g
+from flask import Blueprint, render_template, request, url_for, g, flash
 from werkzeug.utils import redirect
 from datetime import datetime
 from .. import db
@@ -35,7 +35,7 @@ def detail(question_id):
         return render_template('question/question_detail6.html')
 
 
-@bp.route('/create/<int:id>/', methods=('GET','POST'))
+@bp.route('/create/<string:id>/', methods=('GET','POST'))
 @login_required
 def create(id):
     form = QuestionForm()
@@ -49,4 +49,18 @@ def create(id):
 @bp.route('/favorites/')
 def favorites():
     favorites = Question.query.order_by(Question.create_date.desc())
-    return render_template('question/favorite_list.html', favorites=favorites)
+    count = Question.query.order_by(Question.create_date.asc()).count()
+    return render_template('question/favorite_list.html', favorites=favorites, count=count)
+
+@bp.route('/delete/<int:question_id>')
+@login_required
+def delete(question_id):
+    question = Question.query.get_or_404(question_id)
+    if g.user != question.user:
+        flash('삭제권한이 없습니다')
+        return redirect(url_for('question.favorite', question_id=question_id))
+    db.session.delete(question)
+    db.session.commit()
+    return redirect(url_for('question.favorites'))
+
+

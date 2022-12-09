@@ -60,12 +60,11 @@
 						<h2>Log Out</h2>
                    	 	<a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.username }} (로그아웃)</a>
             		{% else %}
-						<h2>Log In</h2>
-                    	<a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
 						<h2>Sign In</h2>
+                    	<a class="nav-link" href="{{ url_for('auth.signup') }}">계정생성</a>
+						<h2>Log In</h2>
                     	<a class="nav-link" href="{{ url_for('auth.login') }}">로그인</a>
             		{% endif %}
-					<a href="{{ url_for('question.create', id = 1) }}" class="btn btn-primary">기후 즐겨찾기</a>
 					<br><br>
 
 				</aside>
